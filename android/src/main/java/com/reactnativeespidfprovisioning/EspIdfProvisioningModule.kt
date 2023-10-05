@@ -111,7 +111,7 @@ class EspIdfProvisioningModule(reactContext: ReactApplicationContext) : ReactCon
       // SECURITY_0 is plain text communication.
       // SECURITY_1 is encrypted.
       // This must match 'wifi_prov_security_t security' in app_main.c
-      val esp : ESPDevice = ESPProvisionManager.getInstance(reactApplicationContext).createESPDevice(ESPConstants.TransportType.TRANSPORT_BLE, ESPConstants.SecurityType.SECURITY_0);
+      val esp : ESPDevice = ESPProvisionManager.getInstance(reactApplicationContext).createESPDevice(ESPConstants.TransportType.TRANSPORT_BLE, ESPConstants.SecurityType.SECURITY_1);
       esp.proofOfPossession = deviceProofOfPossession
 
       // TODO(wdm) What is the name of this service, and therefore what should this const be called?
@@ -131,7 +131,7 @@ class EspIdfProvisioningModule(reactContext: ReactApplicationContext) : ReactCon
     @ReactMethod
     fun createDevice(ssid: String, password: String, devicePop: String,
                      callback: Callback ) {
-      val device : ESPDevice = ESPProvisionManager.getInstance(reactApplicationContext).createESPDevice(ESPConstants.TransportType.TRANSPORT_BLE, ESPConstants.SecurityType.SECURITY_0)
+      val device : ESPDevice = ESPProvisionManager.getInstance(reactApplicationContext).createESPDevice(ESPConstants.TransportType.TRANSPORT_BLE, ESPConstants.SecurityType.SECURITY_1)
       device.proofOfPossession = devicePop
       if (ActivityCompat.checkSelfPermission(reactApplicationContext, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
         device.connectWiFiDevice(ssid, password)
