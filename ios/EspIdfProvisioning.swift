@@ -137,7 +137,13 @@ class EspIdfProvisioning: NSObject {
         dump(status)
         if(!completedFlag) {
           completedFlag = true
-          resolve(status)
+          //resolve(status)
+          switch(status) {
+          case .success:
+            resolve("success")
+          @unknown default:
+            resolve("fail")
+          }
         }
       })
     }
