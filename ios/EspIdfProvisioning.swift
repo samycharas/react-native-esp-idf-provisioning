@@ -141,8 +141,8 @@ class EspIdfProvisioning: NSObject {
           switch(status) {
           case .success:
             resolve("success")
-            case .configApplied:
-            //don't do anything
+          case .configApplied:
+            print("config has been applied")
           @unknown default:
             resolve("fail")
           }
