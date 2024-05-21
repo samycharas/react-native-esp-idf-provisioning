@@ -142,6 +142,7 @@ class EspIdfProvisioning: NSObject {
           case .success:
             resolve("success")
           case .configApplied:
+            completedFlag = false // We want to be able to fire resolve again after configApplied fires this function once.
             print("config has been applied")
           @unknown default:
             resolve("fail")
